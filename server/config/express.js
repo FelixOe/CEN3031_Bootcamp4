@@ -27,14 +27,14 @@ module.exports.init = function () {
 
     /* serve static files */
     app.use('/', express.static('public'));
-    app.use('/index.html', express.static('client'));
+    app.use('/client/', express.static('client'));
 
     /* use the listings router for requests to the api */
     app.use('/api/listings', listingsRouter);
 
     /* go to homepage for all routes not specified */
     app.all('/*', function (req, res) {
-        res.redirect('/index.html');
+        res.redirect('/client/index.html');
     });
 
     return app;
